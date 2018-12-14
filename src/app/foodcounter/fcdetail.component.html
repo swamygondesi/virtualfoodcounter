@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <h1>{{title}}</h1>
+  <p>Resize the browser window to see the effect.</p>
+  <p>The columns will automatically stack on top of each other when the screen is less than 768px wide.</p>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+
+  <div class="row">
+    <div class="col-sm-3" style="background-color:lavender;"> <img src="/assets/images/{{foodcounter.imagename}}" class="img-circle" alt="{{foodcounter.name}}"></div>
+    <div class="col-sm-9" style="background-color:lavenderblush;">
+      <h1>{{foodcounter.name}}</h1>
+      <h2>{{foodcounter.abstract}}</h2>
+       <p><strong>{{foodcounter.description}}</strong></p>
+       <div class="panel-group" id="accordion">
+         <div *ngFor='let menu of foodcounter.menu; let i=index' class="panel panel-default">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i+1}}"><strong>{{menu.itemname}}</strong></a>
+               <span style="margin-left:150px"><i>Quantity:</i>&nbsp;&nbsp;&nbsp;&nbsp;
+              <!--  <a id="minus{{i+1}}" (click)='decrement(i)'>-</a>&nbsp;&nbsp;-->
+                <input type="hidden" name="itemname{{i+1}}" [(ngModel)]="menu.itemname"/>
+                <input type="number" id="quantity{{i+1}}" name="quantity{{i+1}}" [(ngModel)]='quantity[i]' ng-init="0" value="0" min="0" style="width:45px"/>&nbsp;&nbsp;
+                <input type="hidden" name="price{{i+1}}" [(ngModel)]="menu.price * quantity[i]"/>
+              <!--  <a id="plus{{i+1}}" (click)='increment(i)'>+</a> -->
+               </span>
+               <span style="margin-left:700px">₹  {{menu.price}}</span>
+             </h4>
+           </div>
+           <div id="collapse{{i+1}}" class="panel-collapse collapse">
+             <div class="panel-body">{{menu.recipe}}</div>
+           </div>
+         </div>
+        </div>
+    </div>
+  </div>
+    <div class="leftalign">
+    <button type="submit" class="btn btn-success btnwidth">Check Out</button>
+    </div>
+  </form>
+</div>

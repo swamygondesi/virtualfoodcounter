@@ -1,0 +1,74 @@
+<div class="container">
+  <h2>{{foodcounter.name}}</h2>
+  <img src="/assets/images/{{foodcounter.imagename}}" alt="{{foodcounter.name}}" class='imgdim'/>
+  <div *ngIf='orders !=null && orders.length > 0'>
+     <h2>Orders</h2>
+     <table class="table">
+       <thead>
+        <tr>
+          <th> Order Number</th>
+          <th> Order Details</th>
+          <th> Status </th>
+        </tr>
+       </thead>
+       <tbody>
+         <tr class='danger' *ngFor='let order of orders'>
+           <td>{{order.ordernumber}}</td>
+           <td>
+             <ul class="list-group">
+              <li class="list-group-item" *ngFor='let item of order.order'>
+                {{item.itemname}} X {{item.quantity}} <span class="badge">{{item.price}}</span>
+              </li>
+            </ul>
+           </td>
+           <td>
+             <button id='{{order.ordernumber}}' [disabled]='false' (click)="status(order.ordernumber)" type="button" class="btn btn-info">Ready</button>
+          </td>
+         </tr>
+       </tbody>
+     </table>
+  </div>
+  <div>
+  <h2>Menu</h2>
+  <table class="table" *ngIf='foodcounter.menu?.length>0'>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>ItemName</th>
+        <th>Recipe</th>
+        <th>PrepareTime</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="info" *ngFor='let menu of foodcounter.menu;let i =index'>
+        <td>{{menu.category}}</td>
+        <td>{{menu.itemname}}</td>
+        <td>{{menu.recipe}}</td>
+        <td>{{menu.preparetime}}</td>
+        <td>{{menu.price}}</td>
+        <td>
+          <a class='tile' [routerLink]="['/editmenu',menu._id,foodcounter._id]">
+          <img class="icon" src="/assets/images/edit.png" alt="Edit">
+          </a>
+        </td>
+        <td>
+          <a class='tile' (click)='deleteIssue(menu._id)'>
+            <img class="icon" src="/assets/images/delete.jpg" alt="Delete">
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <br/>
+  <div class="">
+      <a [routerLink]="['/addmenu',foodcounter._id,foodcounter.menu?.length||0]" class="btn btn-xs btn-primary vendor"><b>Add Menu</b></a>
+  </div>
+  <!-- <div class="" *ngIf='foodcounter.menu == undefined'>
+      <a [routerLink]="['/addmenu',foodcounter._id,foodcounter.menu?.length||0]" class="btn btn-xs btn-primary vendor"><b>Add Menu</b></a>
+  </div> -->
+  <br/><br/>
+</div>

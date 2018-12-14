@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>{{title}}</h2>
+  <div *ngFor='let menu of foodcounter.menu;let i =index'>
+  <div *ngIf ='menu._id == menuid'>
+  <form class="form-horizontal" #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value,i)">
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="category">Category:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="category" placeholder="Enter category" name="category" [(ngModel)]="menu.category">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="itemname">Item Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="itemname" placeholder="Enter itemname" name="itemname" [(ngModel)]="menu.itemname">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="recipe">Recipe:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="recipe" placeholder="Enter recipe" name="recipe" [(ngModel)]="menu.recipe" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="preparetime">Prepare Time:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="preparetime" placeholder="Enter preparetime" name="preparetime" [(ngModel)]="menu.preparetime" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="price">Price:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="price" placeholder="Enter price" name="price" [(ngModel)]="menu.price" >
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+</div>

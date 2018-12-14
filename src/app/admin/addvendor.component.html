@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>{{title}}</h2>
+  <form class="form-horizontal" #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" [(ngModel)]="name" #nameRef="ngModel">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="abstract">Abstract:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="abstract" placeholder="Enter abstract" name="abstract" [(ngModel)]="abstract" #abstractRef="ngModel">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="description">Description:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="description" placeholder="Enter description" name="description" [(ngModel)]="description" #descriptionRef="ngModel">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="username">Username:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" [(ngModel)]="username" #usernameRef="ngModel">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="password">Password:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="password" placeholder="Enter password" name="password" [(ngModel)]="password" #passwordRef="ngModel">
+      </div>
+    </div>
+    <div class="form-group align">
+        <div class="col-sm-04">
+         <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+        </div>
+        <br/>
+        <button type="button" class="btn btn-success btn-s"
+          (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length" >
+              Upload an Image
+        </button>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

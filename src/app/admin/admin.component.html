@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>{{title}}</h2>
+  <div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Logo</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="info" *ngFor='let foodcounter of foodcounters;'>
+        <td>{{foodcounter.name}}</td>
+        <td> <img class="logo" src="/assets/images/{{foodcounter.imagename}}" alt="{{foodcounter.name}}"></td>
+        <td>
+          <a class='tile' [routerLink]="['/editvendor',foodcounter._id]">
+          <img class="icon" src="/assets/images/edit.png" alt="Edit">
+          </a>
+        </td>
+        <td>
+          <a class='tile' (click)='deleteIssue(foodcounter._id)'>
+            <img class="icon" src="/assets/images/delete.jpg" alt="Delete">
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <br/>
+  <div class="">
+      <a routerLink="/addvendor" class="btn btn-xs btn-primary vendor"><b>Add Vendor</b></a>
+  </div>
+  <br/><br/>
+</div>
