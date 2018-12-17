@@ -38,7 +38,7 @@ export class VendorComponent {
     console.log('Menu = '+this.foodcounter.menu);
     this.orders = this._orderService.getAllOrders(this.id).subscribe(
       (orders:any)=> this.orders = orders,
-      err => console.log('Error ='+err);
+      err => console.log('Error ='+err)
     );
   }
 
@@ -52,7 +52,7 @@ export class VendorComponent {
   status(ordernumber:string){
     this._orderService.updateStatus(ordernumber).subscribe(
       (res:any)=>console.log('updated Status'+res),
-      err => console.log('Error ='+err);
+      err => console.log('Error ='+err)
     );
     this.element = document.getElementById(ordernumber) as HTMLElement;
     this.element.disabled = true;
